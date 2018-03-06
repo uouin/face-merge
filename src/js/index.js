@@ -45,14 +45,30 @@ $(document).ready(function () {
         reader.readAsDataURL(file);
         reader.onload = function () {
             console.log(reader.result);
-            faceMerge(1106759498,'W7MysZoIXLNw4hpd',reader.result,getModel(selectModel))
-                .then((res)=>{
-                    let data = `data:image/jpeg;base64,${res.data.image}`;
-                    $("#merge-content").append(`<img src="${data}">`);
-                })
-                .catch(err=>{
-                    console.log('出错了'+err);
-                })
+            var base64ImageContent = reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
+            var blob = base64ToBlob(base64ImageContent, 'image/jpg');
+            var formData = new FormData();
+            formData.append('picture', blob);
+            let url = "http://localhost:4000/upload";
+            $.ajax({
+                url: url,
+                type: "POST",
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: formData})
+                .done(function(e){
+                    console.log('done');
+                });
+
+            // faceMerge(1106759498,'W7MysZoIXLNw4hpd',reader.result,getModel(selectModel))
+            //     .then((res)=>{
+            //         let data = `data:image/jpeg;base64,${res.data.image}`;
+            //         $("#merge-content").append(`<img src="${data}">`);
+            //     })
+            //     .catch(err=>{
+            //         console.log('出错了'+err);
+            //     })
         };
         reader.onerror = function (error) {
             console.log('Error: ', error);
@@ -69,4 +85,25 @@ function getModel(index){
     }
 }
 
+function base64ToBlob(base64, mime)
+{
+    mime = mime || '';
+    var sliceSize = 1024;
+    var byteChars = window.atob(base64);
+    var byteArrays = [];
 
+    for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+        var slice = byteChars.slice(offset, offset + sliceSize);
+
+        var byteNumbers = new Array(slice.length);
+        for (var i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+        }
+
+        var byteArray = new Uint8Array(byteNumbers);
+
+        byteArrays.push(byteArray);
+    }
+
+    return new Blob(byteArrays, {type: mime});
+}
