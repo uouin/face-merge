@@ -1,0 +1,48 @@
+{
+  "name": "react-face-merge",
+  "version": "1.0.0",
+  "description": "demo for git",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "css-loader": "^0.28.10",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "jquery": "^3.3.1",
+    "qq-ai-sdk": "^1.0.2",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.20.2",
+    "swiper": "^4.1.6",
+    "webpack": "^4.1.0",
+    "webpack-dev-server": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "babel-loader": "^8.0.0-beta.0",
+    "html-webpack-plugin": "^3.0.5",
+    "rimraf": "^2.6.2",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "webpack-cli": "^2.0.10"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline --port 3000",
+    "build": "rimraf dist && webpack --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linweiwei123/face-merge.git"
+  },
+  "keywords": [
+    "face",
+    "merge",
+    "QQ",
+    "AI",
+    "SDK"
+  ],
+  "author": "linweiwei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/linweiwei123/face-merge/issues"
+  },
+  "homepage": "https://github.com/linweiwei123/face-merge#readme"
+}
