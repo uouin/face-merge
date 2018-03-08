@@ -44,11 +44,11 @@ $(document).ready(function () {
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
-            console.log(reader.result);
             var base64ImageContent = reader.result.replace(/^data:image\/(png|jpg|jpeg);base64,/, "");
             var blob = base64ToBlob(base64ImageContent, 'image/jpg');
             var formData = new FormData();
             formData.append('picture', blob);
+            formData.append('model', getModel(selectModel).toString());
             let url = "http://localhost:4000/upload";
             $.ajax({
                 url: url,
@@ -58,17 +58,10 @@ $(document).ready(function () {
                 processData: false,
                 data: formData})
                 .done(function(e){
+                    $("#merge-content").append(`<img class="merged-img" src="${e.data.url}" />`)
                     console.log('done');
                 });
 
-            // faceMerge(1106759498,'W7MysZoIXLNw4hpd',reader.result,getModel(selectModel))
-            //     .then((res)=>{
-            //         let data = `data:image/jpeg;base64,${res.data.image}`;
-            //         $("#merge-content").append(`<img src="${data}">`);
-            //     })
-            //     .catch(err=>{
-            //         console.log('出错了'+err);
-            //     })
         };
         reader.onerror = function (error) {
             console.log('Error: ', error);

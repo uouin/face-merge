@@ -55,3 +55,12 @@ html,body{
     z-index: 99999;
     opacity: 0;
 }
+
+#merge-content{
+    width: 100%;
+}
+
+#merge-content img{
+    width: 100%;
+    height: 100%;
+}
