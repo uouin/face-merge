@@ -12,7 +12,7 @@ var streamBuffers = require('stream-buffers');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('facemerge/index');
 });
 
 router.post('/upload',function(req,res){
@@ -32,7 +32,7 @@ router.post('/upload',function(req,res){
         let base64imagestr = util.base64_encode(files.picture.path);
 
         // 2、人脸融合
-        qqAiSdk.faceMerge(1,'1',base64imagestr,model)
+        qqAiSdk.faceMerge(1,'2',base64imagestr,model)
             .then((res)=>{
 
                 // 3、 输出base64格式的图，转换为buffer

@@ -6,7 +6,6 @@ const aliossaccess = require('./aliossaccess');
 function upload (config, file, filename) {
 
   let defaultConfig = {
-
   };
 
   if (fs.existsSync(aliossaccess)) {

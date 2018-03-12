@@ -3,7 +3,7 @@
  */
 
 import '../assets/css/app.css';
-import '../../node_modules/swiper/dist/css/swiper.min.css';
+import '../assets/css/swiper.css';
 import Swiper from 'swiper';
 import $ from 'jquery';
 var { faceMerge } = require('qq-ai-sdk');
@@ -14,7 +14,6 @@ $(document).ready(function () {
     var mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
         loop: true,
-        // If we need pagination
         pagination: {
             el: '.swiper-pagination',
         },
