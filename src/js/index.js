@@ -12,21 +12,16 @@ var selectModel = 1;
 
 $(document).ready(function () {
     var mySwiper = new Swiper ('.swiper-container', {
-        // Optional parameters
         direction: 'horizontal',
         loop: true,
-
         // If we need pagination
         pagination: {
             el: '.swiper-pagination',
         },
-
-        // Navigation arrows
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-
         // And if we need scrollbar
         scrollbar: {
             el: '.swiper-scrollbar',
@@ -49,16 +44,18 @@ $(document).ready(function () {
             var formData = new FormData();
             formData.append('picture', blob);
             formData.append('model', getModel(selectModel).toString());
-            let url = "http://localhost:4000/upload";
+            let url = "http://localhost:10017/facemerge/upload";
             $.ajax({
                 url: url,
                 type: "POST",
                 cache: false,
+                dataType:'json',
                 contentType: false,
                 processData: false,
                 data: formData})
-                .done(function(e){
-                    $("#merge-content").append(`<img class="merged-img" src="${e.data.url}" />`)
+                .done(function(res){
+                    console.log(res,typeof res);
+                    $("#merge-content").append(`<img class="merged-img" src="${res.data.url}" />`)
                     console.log('done');
                 });
 

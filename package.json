@@ -12,7 +12,7 @@
     "raw-loader": "^0.5.1",
     "style-loader": "^0.20.2",
     "swiper": "^4.1.6",
-    "webpack": "^4.1.0",
+    "webpack": "^3.1.0",
     "webpack-dev-server": "^3.1.0",
     "y18n": "^4.0.0"
   },
@@ -20,14 +20,15 @@
     "@babel/core": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "babel-loader": "^8.0.0-beta.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "html-webpack-plugin": "^3.0.5",
     "rimraf": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "webpack-cli": "^2.0.10"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --port 3000",
-    "build": "rimraf dist && webpack --progress"
+    "start": "set ENV=dev&& webpack-dev-server --hot --inline --port 3000",
+    "build": "rimraf dist && set ENV=dev&& webpack --progress"
   },
   "repository": {
     "type": "git",

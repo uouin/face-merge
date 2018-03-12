@@ -32,7 +32,7 @@ router.post('/upload',function(req,res){
         let base64imagestr = util.base64_encode(files.picture.path);
 
         // 2、人脸融合
-        qqAiSdk.faceMerge(yourappid,yourappkey,base64imagestr,model)
+        qqAiSdk.faceMerge(1,'1',base64imagestr,model)
             .then((res)=>{
 
                 // 3、 输出base64格式的图，转换为buffer

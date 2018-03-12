@@ -6,10 +6,7 @@ const aliossaccess = require('./aliossaccess');
 function upload (config, file, filename) {
 
   let defaultConfig = {
-    accessKeyId: '',
-    accessKeySecret: '',
-    bucket: 'adstatic',
-    region: 'oss-cn-beijing',
+
   };
 
   if (fs.existsSync(aliossaccess)) {
